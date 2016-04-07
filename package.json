@@ -1,0 +1,23 @@
+{
+  "name": "react-native-wheel-picker",
+  "version": "0.9.0",
+  "description": "React native cross platform picker.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lesliesam/react-native-wheel-picker.git"
+  },
+  "keywords": [
+    "react-native",
+    "picker"
+  ],
+  "author": "Yu Zheng",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lesliesam/react-native-wheel-picker/issues"
+  },
+  "homepage": "https://github.com/lesliesam/react-native-wheel-picker#readme"
+}
