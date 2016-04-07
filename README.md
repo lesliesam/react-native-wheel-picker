@@ -9,7 +9,10 @@ The android component is based on https://github.com/AigeStudio/WheelPicker whic
 
 ## How to use
 
+Run command
+```
 npm i react-native-wheel-picker
+```
 Add in settings.gradle 
 ```
 include ':react-native-wheel-picker'
