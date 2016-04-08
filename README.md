@@ -11,7 +11,7 @@ The android component is based on https://github.com/AigeStudio/WheelPicker whic
 
 Run command
 ```
-npm i react-native-wheel-picker
+npm i react-native-wheel-picker --save
 ```
 Add in settings.gradle 
 ```
