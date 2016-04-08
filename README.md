@@ -29,44 +29,71 @@ Modify MainActivity
 
 ## Example code
 ```
-import React, {
+var React = require('react-native')
+
+var {
   AppRegistry,
   Component,
   StyleSheet,
   Text,
   View
-} from 'react-native';
+} = React;
 
 var Picker = require('react-native-wheel-picker')
 var PickerItem = Picker.Item;
 
-class AwesomeProject extends Component {
+
+var AwesomeProject = React.createClass({
   
-  onPikcerSelect(value) {
-    console.log(value)
-  }
+  getInitialState: function() {
+    return {
+      selectedItem : 2,
+      itemList: ['刘备', '张飞', '关羽', '赵云', '黄忠', '马超', '魏延', '诸葛亮']
+    }
+  },
 
-  render() {
-    var itemArray = ['10', '20', '30', '40', '50', '60', '70', '80', '90', '100']
-    var initialItemValue = 30
+  onPikcerSelect: function(index) {
+    this.setState({
+      selectedItem: index,
+    })
+  },
 
+  onAddItem: function() {
+    var name = '司马懿'
+    if (this.state.itemList.indexOf(name) == -1) {
+      this.state.itemList.push(name)
+    }
+    this.setState({
+      selectedItem: this.state.itemList.indexOf(name),
+    })
+  },
+
+  render: function() {
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
           Welcome to React Native!
         </Text>
         <Picker style={{width: 150, height: 180}}
-          selectedValue={initialItemValue}
+          selectedValue={this.state.selectedItem}
           itemStyle={{color:"white", fontSize:26}}
-          onValueChange={(value) => this.onPikcerSelect(value)}>
-            {itemArray.map((value) => (
-              <PickerItem label={value} value={parseInt(value)} key={"money"+value}/>
+          onValueChange={(index) => this.onPikcerSelect(index)}>
+            {this.state.itemList.map((value, i) => (
+              <PickerItem label={value} value={i} key={"money"+value}/>
             ))}
         </Picker>
+        <Text style={{margin: 20, color: '#ffffff'}}>
+          你最喜欢的是：{this.state.itemList[this.state.selectedItem]}
+        </Text>
+
+        <Text style={{margin: 20, color: '#ffffff'}}
+            onPress={this.onAddItem}>
+          怎么没有司马懿？
+        </Text>
       </View>
     );
   }
-}
+});
 
 const styles = StyleSheet.create({
   container: {
@@ -79,6 +106,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     textAlign: 'center',
     margin: 10,
+    color: '#ffffff',
   },
   instructions: {
     textAlign: 'center',
