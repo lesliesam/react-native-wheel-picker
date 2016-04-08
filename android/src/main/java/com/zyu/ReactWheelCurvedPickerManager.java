@@ -60,6 +60,7 @@ public class ReactWheelCurvedPickerManager extends SimpleViewManager<ReactWheelC
     public void setSelectedIndex(ReactWheelCurvedPicker picker, int index) {
         if (picker != null && picker.getState() == AbstractWheelPicker.SCROLL_STATE_IDLE) {
             picker.setItemIndex(index);
+            picker.invalidate();
         }
     }
 
