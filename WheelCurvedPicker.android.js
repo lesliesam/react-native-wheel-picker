@@ -15,12 +15,12 @@ var WheelCurvedPicker = React.createClass ({
 
 		data: React.PropTypes.array,
 
-		currentTextColor: ColorPropType,
-		
-		otherTextColor: ColorPropType,
-		
+		textColor: ColorPropType,
+
 		textSize: React.PropTypes.number,
-		
+
+		itemStyle: React.PropTypes.object,
+
 		itemSpace: React.PropTypes.number,
 
 		onValueChange: React.PropTypes.func,
@@ -32,9 +32,7 @@ var WheelCurvedPicker = React.createClass ({
 
 	getDefaultProps(): Object {
 		return {
-			currentTextColor: '#ffffff',
-			otherTextColor: '#cccccc',
-			textSize: 25,
+			itemStyle : {color:"white", fontSize:26},
 			itemSpace: 20,
 		};
 	},
@@ -56,7 +54,11 @@ var WheelCurvedPicker = React.createClass ({
 			}
 			items.push({value: child.props.value, label: child.props.label});
 		});
-		return {selectedIndex, items};
+
+		var textSize = props.itemStyle.fontSize
+		var textColor = props.itemStyle.color
+
+		return {selectedIndex, items, textSize, textColor};
 	},
 
 	_onValueChange: function(e: Event) {
@@ -66,10 +68,12 @@ var WheelCurvedPicker = React.createClass ({
 	},
 
 	render() {
-		return <WheelCurvedPickerNative 
+		return <WheelCurvedPickerNative
 				{...this.props}
 				onValueChange={this._onValueChange}
 				data={this.state.items}
+				textColor={this.state.textColor}
+				textSize={this.state.textSize}
 				selectedIndex={parseInt(this.state.selectedIndex)} />;
 	}
 });
