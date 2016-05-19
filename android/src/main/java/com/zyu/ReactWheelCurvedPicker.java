@@ -62,6 +62,7 @@ public class ReactWheelCurvedPicker extends WheelCurvedPicker {
     public void setItemIndex(int index) {
         super.setItemIndex(index);
         unitDeltaTotal = 0;
+		mHandler.post(this);
     }
 
     public void setValueData(List<Integer> data) {
