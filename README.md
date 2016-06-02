@@ -20,6 +20,10 @@ Add in settings.gradle
 include ':react-native-wheel-picker'
 project(':react-native-wheel-picker').projectDir = new File(settingsDir, '../node_modules/react-native-wheel-picker/android')
 ```
+Add in app/build.gradle
+```
+compile project(':react-native-wheel-picker')
+```
 Modify MainActivity
 ```
     import com.zyu.ReactNativeWheelPickerPackage;
