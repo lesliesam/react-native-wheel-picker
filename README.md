@@ -38,18 +38,19 @@ Modify MainActivity
 
 ## Example code
 ```
-var React = require('react-native')
+import React from 'react'
 
-var {
+import {
   AppRegistry,
   Component,
   StyleSheet,
   Text,
   View
-} = React;
+} from 'react-native';
 
-var Picker = require('react-native-wheel-picker')
+import Picker from 'react-native-wheel-picker'
 var PickerItem = Picker.Item;
+
 
 
 var AwesomeProject = React.createClass({
