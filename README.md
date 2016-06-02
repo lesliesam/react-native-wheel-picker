@@ -1,7 +1,6 @@
 # react-native-wheel-picker
 [![npm version](http://img.shields.io/npm/v/react-native-wheel-picker.svg?style=flat-square)](https://npmjs.org/package/react-native-wheel-picker "View this project on npm")
 [![npm version](http://img.shields.io/npm/dm/react-native-wheel-picker.svg?style=flat-square)](https://npmjs.org/package/react-native-wheel-picker "View this project on npm")
-[![Issue Stats](http://issuestats.com/github/leecade/react-native-wheel-picker/badge/pr?style=flat-square)](https://github.com/leecade/react-native-wheel-picker/pulls?q=is%3Apr+is%3Aclosed)
 
 ## Introduction
 Cross platform Picker component based on React-native.
