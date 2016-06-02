@@ -22,6 +22,9 @@ project(':react-native-wheel-picker').projectDir = new File(settingsDir, '../nod
 ```
 Modify MainActivity
 ```
+    import com.zyu.ReactNativeWheelPickerPackage;
+    ......
+    
     protected List<ReactPackage> getPackages() {
         return Arrays.<ReactPackage>asList(
             new MainReactPackage(), new ReactNativeWheelPickerPackage()
