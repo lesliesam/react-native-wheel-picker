@@ -1,12 +1,12 @@
 'use strict';
 
-var React = require('react-native');
+import React from 'react';
 
-var {
+import {
 	PickerIOS,
 	Platform,
-} = React;
+} from 'react-native';
 
-var WheelCurvedPicker = require('./WheelCurvedPicker')
+import WheelCurvedPicker from './WheelCurvedPicker'
 
 module.exports = (Platform.OS === 'ios' ? PickerIOS : WheelCurvedPicker)

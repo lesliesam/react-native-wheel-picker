@@ -1,11 +1,11 @@
 'use strict';
 
-var React = require('react-native');
-var {
+import React from 'react';
+import {
 	View,
 	ColorPropType,
 	requireNativeComponent,
-} = React;
+} from 'react-native';
 
 
 var WheelCurvedPicker = React.createClass ({
