@@ -40,7 +40,7 @@ public class ReactWheelCurvedPicker extends WheelCurvedPicker {
             public void onWheelSelected(int index, String data) {
                 if (mValueData != null && index < mValueData.size()) {
                     mEventDispatcher.dispatchEvent(
-                            new ItemSelectedEvent(getId(), SystemClock.uptimeMillis(), mValueData.get(index)));
+                            new ItemSelectedEvent(getId(), mValueData.get(index)));
                 }
             }
 
@@ -86,8 +86,8 @@ class ItemSelectedEvent extends Event<ItemSelectedEvent> {
 
     private final int mValue;
 
-    protected ItemSelectedEvent(int viewTag, long timestampMs,  int value) {
-        super(viewTag, timestampMs);
+    protected ItemSelectedEvent(int viewTag,  int value) {
+        super(viewTag);
         mValue = value;
     }
 
