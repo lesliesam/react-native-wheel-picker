@@ -18,6 +18,7 @@ import com.facebook.react.uimanager.events.Event;
 import com.facebook.react.uimanager.events.EventDispatcher;
 import com.facebook.react.uimanager.events.RCTEventEmitter;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -87,7 +88,7 @@ class ItemSelectedEvent extends Event<ItemSelectedEvent> {
     private final int mValue;
 
     protected ItemSelectedEvent(int viewTag,  int value) {
-        super(viewTag);
+        super(viewTag, (new Date()).getTime());
         mValue = value;
     }
 
