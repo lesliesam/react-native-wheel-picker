@@ -88,7 +88,7 @@ class ItemSelectedEvent extends Event<ItemSelectedEvent> {
     private final int mValue;
 
     protected ItemSelectedEvent(int viewTag,  int value) {
-        super(viewTag, SystemClock.uptimeMillis());
+        super(viewTag);
         mValue = value;
     }
 
