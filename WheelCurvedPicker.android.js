@@ -6,9 +6,11 @@ import {
 	ColorPropType,
 	requireNativeComponent,
 } from 'react-native';
+import _ from 'lodash';
 
 
-var WheelCurvedPicker = React.createClass ({
+const defaultItemStyle = { color: 'white', fontSize: 26 };
+const WheelCurvedPicker = React.createClass ({
 
 	propTypes: {
 		...View.propTypes,
@@ -32,8 +34,7 @@ var WheelCurvedPicker = React.createClass ({
 
 	getDefaultProps(): Object {
 		return {
-			itemStyle : {color:"white", fontSize:26},
-			itemSpace: 20,
+			itemSpace: 20
 		};
 	},
 
@@ -46,8 +47,8 @@ var WheelCurvedPicker = React.createClass ({
 	},
 
 	_stateFromProps: function(props) {
-		var selectedIndex = 0;
-		var items = [];
+		let selectedIndex = 0;
+		let items = [];
 		React.Children.forEach(props.children, function (child, index) {
 			if (child.props.value === props.selectedValue) {
 				selectedIndex = index;
@@ -55,8 +56,9 @@ var WheelCurvedPicker = React.createClass ({
 			items.push({value: child.props.value, label: child.props.label});
 		});
 
-		var textSize = props.itemStyle.fontSize
-		var textColor = props.itemStyle.color
+    let itemStyle = _.assign({}, defaultItemStyle, props.itemStyle);
+		let textSize = itemStyle.fontSize
+		let textColor =itemStyle.color
 
 		return {selectedIndex, items, textSize, textColor};
 	},
@@ -90,6 +92,6 @@ WheelCurvedPicker.Item = React.createClass({
 	},
 });
 
-var WheelCurvedPickerNative = requireNativeComponent('WheelCurvedPicker', WheelCurvedPicker);
+const WheelCurvedPickerNative = requireNativeComponent('WheelCurvedPicker', WheelCurvedPicker);
 
 module.exports = WheelCurvedPicker;
