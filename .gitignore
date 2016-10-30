@@ -2,3 +2,4 @@ android/build
 *.iml
 android/.idea/workspace.xml
 android/.idea/copyright/profiles_settings.xml
+node_modules
