@@ -32,7 +32,7 @@ Add in app/build.gradle
 ```
 compile project(':react-native-wheel-picker')
 ```
-Modify MainActivity
+Modify MainApplication
 ```
     import com.zyu.ReactNativeWheelPickerPackage;
     ......
