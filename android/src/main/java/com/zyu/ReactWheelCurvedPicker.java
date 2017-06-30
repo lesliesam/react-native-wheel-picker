@@ -78,6 +78,12 @@ public class ReactWheelCurvedPicker extends WheelCurvedPicker {
     public int getState() {
         return state;
     }
+
+    @Override
+    public void setData(List<String> data) {
+        super.setData(data);
+        this.postInvalidate();
+    }
 }
 
 class ItemSelectedEvent extends Event<ItemSelectedEvent> {
