@@ -5,22 +5,25 @@ import {
 	View,
 	ColorPropType,
 	requireNativeComponent,
+	ViewPropTypes,
 } from 'react-native';
+
+import PropTypes from 'prop-types';
 
 var createReactClass = require('create-react-class');
 
 var WheelCurvedPicker = createReactClass ({
 
 	propTypes: {
-		...View.propTypes,
-		data: React.PropTypes.array,
+		...ViewPropTypes,
+		data: PropTypes.array,
 		textColor: ColorPropType,
-		textSize: React.PropTypes.number,
-		itemStyle: React.PropTypes.object,
-		itemSpace: React.PropTypes.number,
-		onValueChange: React.PropTypes.func,
-		selectedValue: React.PropTypes.any,
-		selectedIndex: React.PropTypes.number,
+		textSize: PropTypes.number,
+		itemStyle: PropTypes.object,
+		itemSpace: PropTypes.number,
+		onValueChange: PropTypes.func,
+		selectedValue: PropTypes.any,
+		selectedIndex: PropTypes.number,
 		selectedLineColor: ColorPropType,
 	},
 
@@ -75,8 +78,8 @@ var WheelCurvedPicker = createReactClass ({
 
 WheelCurvedPicker.Item = createReactClass ({
 	propTypes: {
-		value: React.PropTypes.any, // string or integer basically
-		label: React.PropTypes.string,
+		value: PropTypes.any, // string or integer basically
+		label: PropTypes.string,
 	},
 
 	render: function() {
