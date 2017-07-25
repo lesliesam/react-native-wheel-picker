@@ -7,8 +7,9 @@ import {
 	requireNativeComponent,
 } from 'react-native';
 
+var createReactClass = require('create-react-class');
 
-var WheelCurvedPicker = React.createClass ({
+var WheelCurvedPicker = createReactClass ({
 
 	propTypes: {
 		...View.propTypes,
@@ -72,7 +73,7 @@ var WheelCurvedPicker = React.createClass ({
 	}
 });
 
-WheelCurvedPicker.Item = React.createClass({
+WheelCurvedPicker.Item = createReactClass ({
 	propTypes: {
 		value: React.PropTypes.any, // string or integer basically
 		label: React.PropTypes.string,
