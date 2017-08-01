@@ -24,10 +24,12 @@ import java.util.List;
  * @author <a href="mailto:lesliesam@hotmail.com"> Sam Yu </a>
  */
 public class ReactWheelCurvedPicker extends WheelCurvedPicker {
-
+    private Integer indicatorColor = Color.WHITE;
     private final EventDispatcher mEventDispatcher;
     private List<Integer> mValueData;
-
+     public void setIndicatorColor(Integer indicatorColor) {
+            this.indicatorColor = indicatorColor;
+         }
     public ReactWheelCurvedPicker(ReactContext reactContext) {
         super(reactContext);
         mEventDispatcher = reactContext.getNativeModule(UIManagerModule.class).getEventDispatcher();
@@ -55,11 +57,7 @@ public class ReactWheelCurvedPicker extends WheelCurvedPicker {
         super.drawForeground(canvas);
 
         Paint paint = new Paint();
-        paint.setColor(Color.WHITE);
-        int colorFrom = 0x00FFFFFF;//Color.BLACK;
-        int colorTo = Color.WHITE;
-        LinearGradient linearGradientShader = new LinearGradient(rectCurItem.left, rectCurItem.top, rectCurItem.right/2, rectCurItem.top, colorFrom, colorTo, Shader.TileMode.MIRROR);
-        paint.setShader(linearGradientShader);
+        paint.setColor(this.indicatorColor);
         canvas.drawLine(rectCurItem.left, rectCurItem.top, rectCurItem.right, rectCurItem.top, paint);
         canvas.drawLine(rectCurItem.left, rectCurItem.bottom, rectCurItem.right, rectCurItem.bottom, paint);
     }
@@ -68,7 +66,7 @@ public class ReactWheelCurvedPicker extends WheelCurvedPicker {
     public void setItemIndex(int index) {
         super.setItemIndex(index);
         unitDeltaTotal = 0;
-		mHandler.post(this);
+        mHandler.post(this);
     }
 
     public void setValueData(List<Integer> data) {
@@ -78,6 +76,12 @@ public class ReactWheelCurvedPicker extends WheelCurvedPicker {
     public int getState() {
         return state;
     }
+
+    @Override
+        public void setData(List<String> data) {
+            super.setData(data);
+            this.postInvalidate();
+        }
 }
 
 class ItemSelectedEvent extends Event<ItemSelectedEvent> {
