@@ -9,6 +9,8 @@ import android.os.SystemClock;
 import android.util.AttributeSet;
 
 import com.aigestudio.wheelpicker.WheelPicker;
+import com.aigestudio.wheelpicker.WheelPicker;
+import com.aigestudio.wheelpicker.WheelPicker.OnWheelChangeListener;
 import com.facebook.react.bridge.Arguments;
 import com.facebook.react.bridge.ReactContext;
 import com.facebook.react.bridge.WritableMap;
@@ -23,18 +25,20 @@ import java.util.List;
  * @author <a href="mailto:lesliesam@hotmail.com"> Sam Yu </a>
  */
 public class ReactWheelCurvedPicker extends WheelPicker {
-    private Integer indicatorColor = Color.WHITE;
+//    private Integer indicatorColor = Color.WHITE;
     private final EventDispatcher mEventDispatcher;
     private List<Integer> mValueData;
-    private int mState;
 
+    private int mState;
+//    public void setIndicatorColor(Integer indicatorColor) {
+//            this.indicatorColor = indicatorColor;
+//         }
     public ReactWheelCurvedPicker(ReactContext reactContext) {
         super(reactContext);
         mEventDispatcher = reactContext.getNativeModule(UIManagerModule.class).getEventDispatcher();
-        setOnWheelChangeListener(new WheelPicker.OnWheelChangeListener() {
+        setOnWheelChangeListener(new OnWheelChangeListener() {
             @Override
             public void onWheelScrolled(int offset) {
-
             }
 
             @Override
@@ -52,11 +56,6 @@ public class ReactWheelCurvedPicker extends WheelPicker {
         });
     }
 
-    @Override
-    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-    }
-
 //    @Override
 //    protected void drawForeground(Canvas canvas) {
 //        super.drawForeground(canvas);
@@ -66,6 +65,10 @@ public class ReactWheelCurvedPicker extends WheelPicker {
 //        canvas.drawLine(rectCurItem.left, rectCurItem.top, rectCurItem.right, rectCurItem.top, paint);
 //        canvas.drawLine(rectCurItem.left, rectCurItem.bottom, rectCurItem.right, rectCurItem.bottom, paint);
 //    }
+    @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+    }
 
 //    @Override
 //    public void setItemIndex(int index) {
@@ -81,6 +84,7 @@ public class ReactWheelCurvedPicker extends WheelPicker {
     public int getState() {
         return mState;
     }
+
 }
 
 class ItemSelectedEvent extends Event<ItemSelectedEvent> {
