@@ -16,6 +16,6 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile "cn.aigestudio.wheelpicker:WheelPicker:1.0.3"
+    compile "cn.aigestudio.wheelpicker:WheelPicker:1.1.2"
     compile 'com.facebook.react:react-native:+'
 }
