@@ -3,7 +3,6 @@ import { StyleSheet, View } from 'react-native';
 import PropTypes from 'prop-types';
 import Picker from './picker';
 import moment from 'moment';
-import _ from 'lodash';
 
 const styles = StyleSheet.create({
   picker: {
@@ -11,13 +10,15 @@ const styles = StyleSheet.create({
   },
 });
 
-const dayNumOfMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
-
 export default class DatePicker extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { date: this.props.date };
+    this.state = {
+      date: this.props.date,
+      monthRange: [],
+      yearRange: [],
+    };
 
     const date = moment(this.state.date);
 
@@ -29,23 +30,21 @@ export default class DatePicker extends Component {
       minute: this.state.date.getMinutes(),
     };
 
-    const dayNum = this._getCurrentDayNumOfMonth();
+    const dayNum = date.daysInMonth();
     this.state.dayRange = this._genDateRange(dayNum);
 
     const minYear = this.props.minimumDate.getFullYear();
     const maxYear = this.props.maximumDate.getFullYear();
 
-    if ((maxYear - minYear) >= 1) {
-      this.state.yearRange = _.map(_.range(minYear, maxYear + 1), (n) => {
-        return { value: n, label: `${n}${this.props.labelUnit.year}` };
-      });
-    } else {
-      this.state.yearRange = [{ value: minYear, label: `${minYear}${this.props.labelUnit.year}` }];
+    for (let i = 1; i <= 12; i += 1) {
+      this.state.monthRange.push({ value: i, label: `${i}${this.props.labelUnit.month}` });
     }
 
-    this.state.monthRange = _.times(12, (n) => {
-      return { value: n + 1, label: `${n + 1}${this.props.labelUnit.month}` };
-    });
+    this.state.yearRange.push({ value: minYear, label: `${minYear}${this.props.labelUnit.year}` });
+
+    for (let i = minYear + 1; i <= maxYear + 1; i += 1) {
+      this.state.yearRange.push({ value: n, label: `${n}${this.props.labelUnit.year}` });
+    }
   }
 
   static propTypes = {
@@ -130,12 +129,22 @@ export default class DatePicker extends Component {
       return [];
     }
 
+    const [hours, minutes] = [[], []];
+
+    for (let i = 0; i <= 24; i += 1) {
+      hours.push(i);
+    }
+
+    for (let i = 0; i <= 60; i += 1) {
+      minutes.push(i);
+    }
+
     return [
       <View key="hour" style={styles.picker}>
         <Picker
           ref="hour"
           selectedValue={this.state.date.getHours()}
-          pickerData={_.range(0, 24)}
+          pickerData={hours}
           onValueChange={(value) => {
             this.newValue.hour = value;
             this.props.onDateChange(this.getValue());
@@ -146,7 +155,7 @@ export default class DatePicker extends Component {
         <Picker
           ref="minute"
           selectedValue={this.state.date.getMinutes()}
-          pickerData={_.range(0, 60)}
+          pickerData={minutes}
           onValueChange={(value) => {
             this.newValue.minute = value;
             this.props.onDateChange(this.getValue());
@@ -166,7 +175,7 @@ export default class DatePicker extends Component {
     let dayNum = dayRange.length;
 
     if (oldMonth !== currentMonth || oldYear !== currentYear) {
-      dayNum = this._getCurrentDayNumOfMonth();
+      dayNum = moment(`${currentYear}-${currentMonth}`, 'YYYY-MM').daysInMonth();
     }
 
     if (dayNum !== dayRange.length) {
@@ -216,28 +225,14 @@ export default class DatePicker extends Component {
     }
   }
 
-  _getCurrentDayNumOfMonth() {
-    const currentMonth = this.newValue.month;
-    const currentYear = this.newValue.year;
-    let dayNum;
+  _genDateRange(dayNum) {
+    const days = [];
 
-    if (currentMonth === 1) {
-      if (moment([currentYear]).isLeapYear()) {
-        dayNum = 29;
-      } else {
-        dayNum = 28;
-      }
-    } else {
-      dayNum = dayNumOfMonth[currentMonth];
+    for (let i = 1; i <= dayNum; i += 1) {
+      days.push({ value: i, label: `${i}${this.props.labelUnit.day}` });
     }
 
-    return dayNum;
-  }
-
-  _genDateRange(dayNum) {
-    return _.times(dayNum, (n) => {
-      return { value: n + 1, label: `${n + 1}${this.props.labelUnit.day}` };
-    });
+    return days;
   }
 
   getValue() {

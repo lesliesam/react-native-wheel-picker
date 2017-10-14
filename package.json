@@ -22,7 +22,6 @@
   },
   "homepage": "https://github.com/wusuopu/react-native-wheel-picker#readme",
   "dependencies": {
-    "lodash": "*",
     "moment": "*"
   },
   "devDependencies": {
