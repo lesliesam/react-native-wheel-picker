@@ -17,6 +17,8 @@ var WheelCurvedPicker = React.createClass ({
 
 		textColor: ColorPropType,
 
+        indicatorColor: ColorPropType,
+
 		textSize: React.PropTypes.number,
 
 		itemStyle: React.PropTypes.object,

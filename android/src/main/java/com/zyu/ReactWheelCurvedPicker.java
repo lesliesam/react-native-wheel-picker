@@ -1,15 +1,6 @@
 package com.zyu;
 
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.LinearGradient;
-import android.graphics.Paint;
-import android.graphics.Shader;
-import android.os.SystemClock;
-import android.util.AttributeSet;
-
-import com.aigestudio.wheelpicker.core.AbstractWheelPicker;
-import com.aigestudio.wheelpicker.view.WheelCurvedPicker;
+import com.aigestudio.wheelpicker.WheelPicker;
 import com.facebook.react.bridge.Arguments;
 import com.facebook.react.bridge.ReactContext;
 import com.facebook.react.bridge.WritableMap;
@@ -23,52 +14,46 @@ import java.util.List;
 /**
  * @author <a href="mailto:lesliesam@hotmail.com"> Sam Yu </a>
  */
-public class ReactWheelCurvedPicker extends WheelCurvedPicker {
+public class ReactWheelCurvedPicker extends WheelPicker{
 
     private final EventDispatcher mEventDispatcher;
     private List<Integer> mValueData;
+    private int mState = SCROLL_STATE_IDLE;
+
+    public void setIndicatorColor(Integer indicatorColor) {
+        setIndicator(true);
+        super.setIndicatorColor(indicatorColor);
+    }
 
     public ReactWheelCurvedPicker(ReactContext reactContext) {
         super(reactContext);
         mEventDispatcher = reactContext.getNativeModule(UIManagerModule.class).getEventDispatcher();
         setOnWheelChangeListener(new OnWheelChangeListener() {
             @Override
-            public void onWheelScrolling(float deltaX, float deltaY) {
+            public void onWheelScrolled(int offset) {
+
             }
 
             @Override
-            public void onWheelSelected(int index, String data) {
-                if (mValueData != null && index < mValueData.size()) {
+            public void onWheelSelected(int position) {
+                if (mValueData != null && position < mValueData.size()) {
                     mEventDispatcher.dispatchEvent(
-                            new ItemSelectedEvent(getId(), mValueData.get(index)));
+                            new ItemSelectedEvent(getId(), mValueData.get(position)));
                 }
+
             }
 
             @Override
             public void onWheelScrollStateChanged(int state) {
+                mState = state;
+
             }
         });
     }
 
     @Override
-    protected void drawForeground(Canvas canvas) {
-        super.drawForeground(canvas);
-
-        Paint paint = new Paint();
-        paint.setColor(Color.WHITE);
-        int colorFrom = 0x00FFFFFF;//Color.BLACK;
-        int colorTo = Color.WHITE;
-        LinearGradient linearGradientShader = new LinearGradient(rectCurItem.left, rectCurItem.top, rectCurItem.right/2, rectCurItem.top, colorFrom, colorTo, Shader.TileMode.MIRROR);
-        paint.setShader(linearGradientShader);
-        canvas.drawLine(rectCurItem.left, rectCurItem.top, rectCurItem.right, rectCurItem.top, paint);
-        canvas.drawLine(rectCurItem.left, rectCurItem.bottom, rectCurItem.right, rectCurItem.bottom, paint);
-    }
-
-    @Override
-    public void setItemIndex(int index) {
-        super.setItemIndex(index);
-        unitDeltaTotal = 0;
-		mHandler.post(this);
+    public void setSelectedItemPosition(int index) {
+        super.setSelectedItemPosition(index);
     }
 
     public void setValueData(List<Integer> data) {
@@ -76,7 +61,13 @@ public class ReactWheelCurvedPicker extends WheelCurvedPicker {
     }
 
     public int getState() {
-        return state;
+        return mState;
+    }
+
+    @Override
+    public void setData(List data) {
+        super.setData(data);
+        this.postInvalidate();
     }
 }
 
