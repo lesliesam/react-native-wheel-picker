@@ -1,46 +1,42 @@
 import React, { Component } from 'react';
-import { Text, View, ScrollView, StatusBar } from 'react-native';
-import { Picker, DatePicker } from 'rn-wheel-picker'
+import { Text, View, ScrollView, StatusBar, StyleSheet } from 'react-native';
+import { Picker, DatePicker } from 'rn-wheel-picker';
 
-const styles = {
+const styles = StyleSheet.create({
   text__info: {
     backgroundColor: 'green',
     paddingTop: 10,
-    paddingBottom: 10
+    paddingBottom: 10,
   },
   separator: {
     backgroundColor: 'green',
-    height: 30
-  }
-}
+    height: 30,
+  },
+});
 
 export default class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { };
-  }
+  static propTypes = {};
+  static defaultProps = {};
 
-  static propTypes = { }
-
-  static defaultProps = { }
+  state = {};
 
   render() {
     return (
-      <View style={{flex: 1, marginTop: 30}}>
+      <View style={{ flex: 1, marginTop: 30 }}>
         <StatusBar hidden />
 
-        <ScrollView style={{flex: 1}}>
+        <ScrollView style={{ flex: 1 }}>
           <View>
             <Text style={styles.text__info}>
               current date: {this.state.date && this.state.date.toJSON()}
             </Text>
-            <DatePicker mode="date" onDateChange={ (date) => this.setState({date}) } />
+            <DatePicker mode="date" onDateChange={date => this.setState({ date })} />
 
             <View style={styles.separator} />
             <Text style={styles.text__info}>
               current time: {this.state.time && this.state.time.toJSON()}
             </Text>
-            <DatePicker mode="time" onDateChange={ (time) => this.setState({time}) } />
+            <DatePicker mode="time" onDateChange={time => this.setState({ time })} />
 
             <View style={styles.separator} />
             <Text style={styles.text__info}>
@@ -48,8 +44,8 @@ export default class App extends Component {
             </Text>
             <DatePicker
               mode="datetime"
-              onDateChange={ (datetime) => this.setState({datetime}) }
-              labelUnit={{ year: 'Y', month: 'M', day: 'D' }}
+              onDateChange={datetime => this.setState({ datetime })}
+              labelUnit={{ year: 'Y', month: 'M', date: 'D' }}
             />
 
             <View style={styles.separator} />
@@ -57,10 +53,10 @@ export default class App extends Component {
               current selectedValue: {this.state.value}
             </Text>
             <Picker
-              style={{flex: 1}}
+              style={{ flex: 1 }}
               selectedValue={1}
               pickerData={[1, 2, 3, 4, 5, 6]}
-              onValueChange={(value) => this.setState({value})}
+              onValueChange={value => this.setState({ value })}
             />
           </View>
         </ScrollView>

@@ -1,6 +1,5 @@
 rootProject.name = 'Demo'
+include ':rn-wheel-picker'
+project(':rn-wheel-picker').projectDir = new File(rootProject.projectDir, '../node_modules/rn-wheel-picker/android')
 
 include ':app'
-
-include ':rn-wheel-picker'
-project(':rn-wheel-picker').projectDir = new File(settingsDir, '../node_modules/rn-wheel-picker/android')

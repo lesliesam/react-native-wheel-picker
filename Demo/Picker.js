@@ -1,9 +1,7 @@
-'use strict';
-
-import React, { Component } from 'react'
-import Picker from 'react-native-wheel-picker'
-const PickerItem = Picker.Item
-import _ from 'lodash'
+import React, { Component } from 'react';
+import Picker from 'react-native-wheel-picker';
+const PickerItem = Picker.Item;
+import _ from 'lodash';
 
 const styles = {
   picker: {
