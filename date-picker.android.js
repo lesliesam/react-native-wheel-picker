@@ -183,7 +183,6 @@ export default class DatePicker extends PureComponent {
 
     if (oldMonth !== currentMonth || oldYear !== currentYear) {
       dayNum = moment(`${currentYear}-${currentMonth + 1}`, 'YYYY-MM').daysInMonth();
-      console.log(dayNum);
     }
 
     if (dayNum !== dayRange.length) {
