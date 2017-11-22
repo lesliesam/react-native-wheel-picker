@@ -1,8 +1,10 @@
 package com.zyu;
 
 import android.graphics.Color;
+import android.support.annotation.Nullable;
 
 import com.aigestudio.wheelpicker.core.AbstractWheelPicker;
+import com.facebook.react.bridge.Callback;
 import com.facebook.react.bridge.ReadableArray;
 import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.common.MapBuilder;
@@ -57,7 +59,7 @@ public class ReactWheelCurvedPickerManager extends SimpleViewManager<ReactWheelC
         }
     }
 
-    @ReactProp(name="selectedIndex")
+    @ReactProp(name="selectedIndex") 
     public void setSelectedIndex(ReactWheelCurvedPicker picker, int index) {
         if (picker != null && picker.getState() == AbstractWheelPicker.SCROLL_STATE_IDLE) {
             picker.setItemIndex(index);
@@ -99,6 +101,15 @@ public class ReactWheelCurvedPickerManager extends SimpleViewManager<ReactWheelC
     public void setItemSpace(ReactWheelCurvedPicker picker, int space) {
         if (picker != null) {
             picker.setItemSpace((int) PixelUtil.toPixelFromDIP(space));
+        }
+    }
+
+    @Override
+    public void receiveCommand(ReactWheelCurvedPicker picker, int commandId, @Nullable ReadableArray args) {
+        super.receiveCommand(picker, commandId, args);
+        if (commandId == 0) { // command 0 is dispatchChangeEvent on demand
+            int curIndex = picker.getItemIndex();
+            picker.dispatchChangeEvent(curIndex);
         }
     }
 

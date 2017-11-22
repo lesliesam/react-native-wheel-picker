@@ -40,8 +40,9 @@ public class ReactWheelCurvedPicker extends WheelCurvedPicker {
             @Override
             public void onWheelSelected(int index, String data) {
                 if (mValueData != null && index < mValueData.size()) {
-                    mEventDispatcher.dispatchEvent(
-                            new ItemSelectedEvent(getId(), mValueData.get(index)));
+                    dispatchChangeEvent(index);
+//                    mEventDispatcher.dispatchEvent(
+//                            new ItemSelectedEvent(getId(), mValueData.get()));
                 }
             }
 
@@ -49,6 +50,11 @@ public class ReactWheelCurvedPicker extends WheelCurvedPicker {
             public void onWheelScrollStateChanged(int state) {
             }
         });
+    }
+
+    public void dispatchChangeEvent(int forIndex) {
+        mEventDispatcher.dispatchEvent(
+                new ItemSelectedEvent(getId(), mValueData.get(forIndex)));
     }
 
     @Override
@@ -71,6 +77,10 @@ public class ReactWheelCurvedPicker extends WheelCurvedPicker {
         super.setItemIndex(index);
         unitDeltaTotal = 0;
 		mHandler.post(this);
+    }
+
+    public int getItemIndex() {
+        return itemIndex;
     }
 
     public void setSelectedLineColor(int selectedLineColor) {
