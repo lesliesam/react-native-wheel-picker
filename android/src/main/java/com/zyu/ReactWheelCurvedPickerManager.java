@@ -10,6 +10,9 @@ import com.facebook.react.uimanager.PixelUtil;
 import com.facebook.react.uimanager.SimpleViewManager;
 import com.facebook.react.uimanager.ThemedReactContext;
 import com.facebook.react.uimanager.annotations.ReactProp;
+import com.facebook.react.bridge.Promise;
+import com.facebook.react.bridge.ReactMethod;
+
 
 import java.util.ArrayList;
 import java.util.Map;
@@ -57,7 +60,7 @@ public class ReactWheelCurvedPickerManager extends SimpleViewManager<ReactWheelC
         }
     }
 
-    @ReactProp(name="selectedIndex")
+    @ReactProp(name="selectedIndex") 
     public void setSelectedIndex(ReactWheelCurvedPicker picker, int index) {
         if (picker != null && picker.getState() == AbstractWheelPicker.SCROLL_STATE_IDLE) {
             picker.setItemIndex(index);
@@ -99,6 +102,15 @@ public class ReactWheelCurvedPickerManager extends SimpleViewManager<ReactWheelC
     public void setItemSpace(ReactWheelCurvedPicker picker, int space) {
         if (picker != null) {
             picker.setItemSpace((int) PixelUtil.toPixelFromDIP(space));
+        }
+    }
+
+    @ReactMethod
+    public void getSelectedItem(ReactWheelCurvedPicker picker, Promise promise) {
+        if (picker != null) {
+            promise.resolve(picker.getItemIndex());
+        } else {
+            promise.reject(new java.lang.RuntimeException("No value selected"));
         }
     }
 

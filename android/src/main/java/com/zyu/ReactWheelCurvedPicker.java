@@ -73,6 +73,10 @@ public class ReactWheelCurvedPicker extends WheelCurvedPicker {
 		mHandler.post(this);
     }
 
+    public int getItemIndex() {
+        return itemIndex;
+    }
+
     public void setSelectedLineColor(int selectedLineColor) {
         this.selectedLineColor = selectedLineColor;
         invalidate();

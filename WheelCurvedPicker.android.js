@@ -6,10 +6,11 @@ import createReactClass from 'create-react-class'
 import {
 	ColorPropType,
 	requireNativeComponent,
-	ViewPropTypes
+	ViewPropTypes,
+	NativeModules,
 } from 'react-native';
 
-
+var WheelCurvedPickerModule = NativeModules.WheelCurvedPicker;
 var WheelCurvedPicker = createReactClass ({
 
 	propTypes: {
@@ -46,6 +47,10 @@ var WheelCurvedPicker = createReactClass ({
 
 	componentWillReceiveProps: function(nextProps) {
 		this.setState(this._stateFromProps(nextProps));
+	},
+
+	getSelectedItem: function() {
+		return WheelCurvedPickerModule.getSelectedItem();
 	},
 
 	_stateFromProps: function(props) {
