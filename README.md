@@ -70,7 +70,7 @@ var AwesomeProject = React.createClass({
     }
   },
 
-  onPikcerSelect: function(index) {
+  onPickerSelect: function(index) {
     this.setState({
       selectedItem: index,
     })
@@ -95,7 +95,7 @@ var AwesomeProject = React.createClass({
         <Picker style={{width: 150, height: 180}}
           selectedValue={this.state.selectedItem}
           itemStyle={{color:"white", fontSize:26}}
-          onValueChange={(index) => this.onPikcerSelect(index)}>
+          onValueChange={(index) => this.onPickerSelect(index)}>
             {this.state.itemList.map((value, i) => (
               <PickerItem label={value} value={i} key={"money"+value}/>
             ))}
