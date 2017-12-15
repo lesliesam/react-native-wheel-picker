@@ -15,13 +15,13 @@ The android component is based on https://github.com/AigeStudio/WheelPicker whic
 
 Run command
 
-For apps using RN 0.32 or higher, please run
+For apps using RN 0.40 or higher, please run
 ```
 npm i react-native-wheel-picker --save
 ```
-For apps using RN 0.31 or less, please run
+For apps using RN 0.39 or less, please run
 ```
-npm install --save --save-exact react-native-wheel-picker@1.0.1
+npm install --save --save-exact react-native-wheel-picker@1.1.2
 ```
 Add in settings.gradle
 ```
