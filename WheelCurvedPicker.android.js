@@ -21,7 +21,7 @@ const WheelCurvedPickerNativeInterface = {
 		itemSpace: PropTypes.number,
 		onValueChange: PropTypes.func,
 		selectedValue: PropTypes.any,
-		selectedIndex: PropTypes.number,
+		selectedIndex: PropTypes.any,
 	}
 }
 
@@ -46,7 +46,7 @@ class WheelCurvedPicker extends React.Component {
 
 		selectedValue: PropTypes.any,
 
-		selectedIndex: PropTypes.number,
+		selectedIndex: PropTypes.any,
 	}
 
 	constructor(props){
