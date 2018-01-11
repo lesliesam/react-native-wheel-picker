@@ -4,8 +4,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { View, ColorPropType, requireNativeComponent } from 'react-native'
 
-var WheelCurvedPicker = React.createClass({
-    propTypes: {
+export default class WheelCurvedPicker extends React.Component {
+    static propTypes = {
         ...View.propTypes,
 
         data: PropTypes.array,
@@ -25,24 +25,24 @@ var WheelCurvedPicker = React.createClass({
         selectedValue: PropTypes.any,
 
         selectedIndex: PropTypes.number
-    },
+    }
 
-    getDefaultProps(): Object {
-        return {
-            itemStyle: { color: 'white', fontSize: 26 },
-            itemSpace: 20
-        }
-    },
+    static defaultProps = {
+        itemStyle: { color: 'white', fontSize: 26 },
+        itemSpace: 20
+    }
 
-    getInitialState: function() {
-        return this._stateFromProps(this.props)
-    },
+    constructor(...params) {
+        super(...params)
 
-    componentWillReceiveProps: function(nextProps) {
+        this.state = this._stateFromProps(this.props)
+    }
+
+    componentWillReceiveProps(nextProps) {
         this.setState(this._stateFromProps(nextProps))
-    },
+    }
 
-    _stateFromProps: function(props) {
+    _stateFromProps(props) {
         var selectedIndex = 0
         var items = []
         React.Children.forEach(props.children, function(child, index) {
@@ -56,13 +56,13 @@ var WheelCurvedPicker = React.createClass({
         var textColor = props.itemStyle.color
 
         return { selectedIndex, items, textSize, textColor }
-    },
+    }
 
-    _onValueChange: function(e: Event) {
+    _onValueChange(e: Event) {
         if (this.props.onValueChange) {
             this.props.onValueChange(e.nativeEvent.data)
         }
-    },
+    }
 
     render() {
         return (
@@ -76,20 +76,18 @@ var WheelCurvedPicker = React.createClass({
             />
         )
     }
-})
+}
 
-WheelCurvedPicker.Item = React.createClass({
-    propTypes: {
+WheelCurvedPicker.Item = class extends React.Component {
+    static propTypes: {
         value: PropTypes.any, // string or integer basically
         label: PropTypes.string
-    },
+    }
 
-    render: function() {
+    render() {
         // These items don't get rendered directly.
         return null
     }
-})
+}
 
-var WheelCurvedPickerNative = requireNativeComponent('WheelCurvedPicker', WheelCurvedPicker)
-
-module.exports = WheelCurvedPicker
+let WheelCurvedPickerNative = requireNativeComponent('WheelCurvedPicker', WheelCurvedPicker)
