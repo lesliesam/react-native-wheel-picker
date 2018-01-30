@@ -68,7 +68,7 @@ export default class WheelCurvedPicker extends React.Component {
         return (
             <WheelCurvedPickerNative
                 {...this.props}
-                onValueChange={this._onValueChange}
+                onValueChange={this._onValueChange.bind(this)}
                 data={this.state.items}
                 textColor={this.state.textColor}
                 textSize={this.state.textSize}
