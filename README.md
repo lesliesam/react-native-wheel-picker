@@ -11,6 +11,8 @@ The android component is based on https://github.com/AigeStudio/WheelPicker whic
 ![](https://raw.githubusercontent.com/lesliesam/react-native-wheel-picker/master/demo.gif)
 ![](https://raw.githubusercontent.com/lesliesam/react-native-wheel-picker/master/demo_android.gif)
 
+Note this component will not work if using Expo for development.
+
 ## How to use
 
 Run command
