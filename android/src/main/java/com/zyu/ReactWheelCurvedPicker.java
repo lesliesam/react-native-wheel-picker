@@ -8,8 +8,8 @@ import android.graphics.Shader;
 import android.os.SystemClock;
 import android.util.AttributeSet;
 
-import com.aigestudio.wheelpicker.core.AbstractWheelPicker;
-import com.aigestudio.wheelpicker.view.WheelCurvedPicker;
+import org.vispo.wheelpicker.core.AbstractWheelPicker;
+import org.vispo.wheelpicker.view.WheelCurvedPicker;
 import com.facebook.react.bridge.Arguments;
 import com.facebook.react.bridge.ReactContext;
 import com.facebook.react.bridge.WritableMap;

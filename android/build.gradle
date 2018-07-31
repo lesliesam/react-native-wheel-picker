@@ -1,9 +1,6 @@
 apply plugin: 'com.android.library'
 
 android {
-    repositories {
-	    maven { url 'https://jitpack.io' }
-	},
     compileSdkVersion 23
     buildToolsVersion "23.0.1"
     defaultConfig {
