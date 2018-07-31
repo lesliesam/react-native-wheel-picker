@@ -23,11 +23,13 @@ public class ReactWheelCurvedPickerManager extends SimpleViewManager<ReactWheelC
 
     private static final int DEFAULT_TEXT_SIZE = 25 * 2;
     private static final int DEFAULT_ITEM_SPACE = 14 * 2;
+    private static final String DEFAULT_TEXT_ALIGN = "CENTER";
 
     @Override
     protected ReactWheelCurvedPicker createViewInstance(ThemedReactContext reactContext) {
         ReactWheelCurvedPicker picker = new ReactWheelCurvedPicker(reactContext);
         picker.setTextColor(Color.LTGRAY);
+        picker.setTextAlign(DEFAULT_TEXT_ALIGN);
         picker.setCurrentTextColor(Color.WHITE);
         picker.setTextSize(DEFAULT_TEXT_SIZE);
         picker.setItemSpace(DEFAULT_ITEM_SPACE);
@@ -70,6 +72,13 @@ public class ReactWheelCurvedPickerManager extends SimpleViewManager<ReactWheelC
         if (picker != null) {
             picker.setCurrentTextColor(color);
             picker.setTextColor(color);
+        }
+    }
+
+    @ReactProp(name="textAlign")
+    public void setTextAlign(ReactWheelCurvedPicker picker, String align) {
+        if (picker != null) {
+            picker.setTextAlign(align);
         }
     }
 
