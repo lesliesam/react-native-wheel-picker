@@ -1,8 +1,8 @@
-'use strict';
-
-import React from 'react';
-import {
-	View,
-} from 'react-native';
-
-module.exports = View;
+'use strict'; 
+ 
+import React from 'react'; 
+import { 
+  PickerIOS
+} from 'react-native'; 
+ 
+module.exports = PickerIOS; 

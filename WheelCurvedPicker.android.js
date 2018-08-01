@@ -81,7 +81,9 @@ class WheelCurvedPicker extends React.Component {
 		var textColor = props.itemStyle.color
 		var textAlign = props.itemStyle.textAlign
 
-		return {selectedIndex, items, textSize, textColor, textAlign};
+		if (textAlign) textAlign = textAlign.toUpperCase();
+
+		return {selectedIndex, items, textAlign, textSize, textColor};
 	}
 
 	_onValueChange = (e) => {
