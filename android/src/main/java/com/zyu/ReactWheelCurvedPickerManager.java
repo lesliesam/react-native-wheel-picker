@@ -47,11 +47,11 @@ public class ReactWheelCurvedPickerManager extends SimpleViewManager<ReactWheelC
     @ReactProp(name="data")
     public void setData(ReactWheelCurvedPicker picker, ReadableArray items) {
         if (picker != null) {
-            ArrayList<Integer> valueData = new ArrayList<>();
+            ArrayList<Double> valueData = new ArrayList<>();
             ArrayList<String> labelData = new ArrayList<>();
             for (int i = 0; i < items.size(); i ++) {
                 ReadableMap itemMap = items.getMap(i);
-                valueData.add(itemMap.getInt("value"));
+                valueData.add(itemMap.getDouble("value"));
                 labelData.add(itemMap.getString("label"));
             }
             picker.setValueData(valueData);
