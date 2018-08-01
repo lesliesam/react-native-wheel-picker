@@ -2,7 +2,7 @@
  
 import React from 'react'; 
 import { 
-  View, 
+  PickerIOS
 } from 'react-native'; 
  
-module.exports = View; 
+module.exports = PickerIOS; 
