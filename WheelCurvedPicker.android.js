@@ -16,6 +16,7 @@ const WheelCurvedPickerNativeInterface = {
 		...View.propTypes,
 		data:PropTypes.array,
 		textColor: ColorPropType,
+		textAlign: PropTypes.string,
 		textSize: PropTypes.number,
 		itemStyle: PropTypes.object,
 		itemSpace: PropTypes.number,
@@ -35,6 +36,8 @@ class WheelCurvedPicker extends React.Component {
 		data: PropTypes.array,
 
 		textColor: ColorPropType,
+
+		textAlign: PropTypes.string,
 
 		textSize: PropTypes.number,
 
@@ -56,7 +59,8 @@ class WheelCurvedPicker extends React.Component {
 
 	static defaultProps = {
 		itemStyle : {color:"white", fontSize:26},
-		itemSpace: 20
+		itemSpace: 20,
+		textAlign: 'CENTER'
 	}
 
 	componentWillReceiveProps (props) {
@@ -75,8 +79,11 @@ class WheelCurvedPicker extends React.Component {
 
 		var textSize = props.itemStyle.fontSize
 		var textColor = props.itemStyle.color
+		var textAlign = props.itemStyle.textAlign
 
-		return {selectedIndex, items, textSize, textColor};
+		if (textAlign) textAlign = textAlign.toUpperCase();
+
+		return {selectedIndex, items, textAlign, textSize, textColor};
 	}
 
 	_onValueChange = (e) => {
@@ -91,6 +98,7 @@ class WheelCurvedPicker extends React.Component {
 				onValueChange={this._onValueChange}
 				data={this.state.items}
 				textColor={this.state.textColor}
+				textAlign={this.state.textAlign}
 				textSize={this.state.textSize}
 				selectedIndex={parseInt(this.state.selectedIndex)} />;
 	}

@@ -8,8 +8,8 @@ import android.graphics.Shader;
 import android.os.SystemClock;
 import android.util.AttributeSet;
 
-import com.aigestudio.wheelpicker.core.AbstractWheelPicker;
-import com.aigestudio.wheelpicker.view.WheelCurvedPicker;
+import org.vispo.wheelpicker.core.AbstractWheelPicker;
+import org.vispo.wheelpicker.view.WheelCurvedPicker;
 import com.facebook.react.bridge.Arguments;
 import com.facebook.react.bridge.ReactContext;
 import com.facebook.react.bridge.WritableMap;
@@ -26,7 +26,7 @@ import java.util.List;
 public class ReactWheelCurvedPicker extends WheelCurvedPicker {
 
     private final EventDispatcher mEventDispatcher;
-    private List<Integer> mValueData;
+    private List<Double> mValueData;
 
     public ReactWheelCurvedPicker(ReactContext reactContext) {
         super(reactContext);
@@ -71,7 +71,7 @@ public class ReactWheelCurvedPicker extends WheelCurvedPicker {
 		mHandler.post(this);
     }
 
-    public void setValueData(List<Integer> data) {
+    public void setValueData(List<Double> data) {
         mValueData = data;
     }
 
@@ -84,9 +84,9 @@ class ItemSelectedEvent extends Event<ItemSelectedEvent> {
 
     public static final String EVENT_NAME = "wheelCurvedPickerPageSelected";
 
-    private final int mValue;
+    private final Double mValue;
 
-    protected ItemSelectedEvent(int viewTag,  int value) {
+    protected ItemSelectedEvent(int viewTag,  Double value) {
         super(viewTag);
         mValue = value;
     }
@@ -103,7 +103,7 @@ class ItemSelectedEvent extends Event<ItemSelectedEvent> {
 
     private WritableMap serializeEventData() {
         WritableMap eventData = Arguments.createMap();
-        eventData.putInt("data", mValue);
+        eventData.putDouble("data", mValue);
         return eventData;
     }
 }
