@@ -14,50 +14,23 @@ const WheelCurvedPickerNativeInterface = {
 	name: 'WheelCurvedPicker',
 	propTypes: {
 		...View.propTypes,
-		data: any,
+		data:PropTypes.array,
 		textColor: ColorPropType,
-		textSize: any,
-		itemStyle: any,
-		itemSpace: any,
-		lineColor: any,
-		lineGradientColorFrom: any,
-		lineGradientColorTo: any,
-		onValueChange: any,
-		selectedValue: any,
-		selectedIndex: any,
+		textSize: PropTypes.number,
+		itemStyle: PropTypes.object,
+		itemSpace: PropTypes.number,
+		onValueChange: PropTypes.func,
+		selectedValue: PropTypes.any,
+		selectedIndex: PropTypes.number,
+		lineColor: PropTypes.any,
+		lineGradientColorFrom: PropTypes.any,
+		lineGradientColorTo: PropTypes.any,
 	}
 }
 
 const WheelCurvedPickerNative = requireNativeComponent('WheelCurvedPicker', WheelCurvedPickerNativeInterface);
 
 class WheelCurvedPicker extends React.Component {
-
-	propTypes: {
-		...View.propTypes,
-
-		data: any,
-
-		textColor: ColorPropType,
-
-		textSize: any,
-
-		itemStyle: any,
-
-		itemSpace: any,
-
-		onValueChange: any,
-
-		selectedValue: any,
-
-		selectedIndex: any,
-			
-		lineColor: any,
-			
-		lineGradientColorFrom: any,
-			
-		lineGradientColorTo: any,
-	}
-
 	constructor(props){
 		super(props)
 		this.state = this._stateFromProps(props)
@@ -106,15 +79,30 @@ class WheelCurvedPicker extends React.Component {
 }
 
 class Item extends React.Component {
-	propTypes: {
-		value: any, // string or integer basically
-		label: any,
-	}
-
 	render () {
 		// These items don't get rendered directly.
 		return null;
 	}
+}
+		
+WheelCurvedPicker.propTypes = {
+	...View.propTypes,
+	data: PropTypes.array,
+	textColor: ColorPropType,
+	textSize: PropTypes.number,
+	itemStyle: PropTypes.object,
+	itemSpace: PropTypes.number,
+	onValueChange: PropTypes.func,
+	selectedValue: PropTypes.any,
+	selectedIndex: PropTypes.number,
+	lineColor: PropTypes.any,
+	lineGradientColorFrom: PropTypes.any,
+	lineGradientColorTo: PropTypes.any
+}
+
+Item.propTypes = {
+	value: PropTypes.any, // string or integer basically
+	label: PropTypes.string,
 }
 
 WheelCurvedPicker.Item = Item;
