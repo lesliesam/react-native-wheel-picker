@@ -16,15 +16,15 @@ const WheelCurvedPickerNativeInterface = {
 		...View.propTypes,
 		data:PropTypes.array,
 		textColor: ColorPropType,
-		textSize: PropTypes.number,
+		textSize: any,
 		itemStyle: PropTypes.object,
-		itemSpace: PropTypes.number,
+		itemSpace: any,
 		lineColor: PropTypes.string,
 		lineGradientColorFrom: PropTypes.string,
 		lineGradientColorTo: PropTypes.string,
 		onValueChange: PropTypes.func,
 		selectedValue: PropTypes.any,
-		selectedIndex: PropTypes.number,
+		selectedIndex: any,
 	}
 }
 
@@ -39,17 +39,17 @@ class WheelCurvedPicker extends React.Component {
 
 		textColor: ColorPropType,
 
-		textSize: PropTypes.number,
+		textSize: any,
 
 		itemStyle: PropTypes.object,
 
-		itemSpace: PropTypes.number,
+		itemSpace: any,
 
 		onValueChange: PropTypes.func,
 
 		selectedValue: PropTypes.any,
 
-		selectedIndex: PropTypes.number,
+		selectedIndex: any,
 			
 		lineColor: PropTypes.string,
 			
