@@ -27,6 +27,11 @@ public class ReactWheelCurvedPicker extends WheelCurvedPicker {
 
     private final EventDispatcher mEventDispatcher;
     private List<Integer> mValueData;
+	
+    private Integer mLineColor = Color.WHITE; // Default line color
+    private boolean isLineGradient = false;    // By default line color is not a gradient
+    private Integer mLinegradientFrom = Color.BLACK; // Default starting gradient color
+    private Integer mLinegradientTo = Color.WHITE; // Default end gradient color
 
     public ReactWheelCurvedPicker(ReactContext reactContext) {
         super(reactContext);
@@ -55,13 +60,32 @@ public class ReactWheelCurvedPicker extends WheelCurvedPicker {
         super.drawForeground(canvas);
 
         Paint paint = new Paint();
-        paint.setColor(Color.WHITE);
-        int colorFrom = 0x00FFFFFF;//Color.BLACK;
-        int colorTo = Color.WHITE;
-        LinearGradient linearGradientShader = new LinearGradient(rectCurItem.left, rectCurItem.top, rectCurItem.right/2, rectCurItem.top, colorFrom, colorTo, Shader.TileMode.MIRROR);
-        paint.setShader(linearGradientShader);
+        paint.setColor(Color.BLACK); // changed this from WHITE to BLACK
+	    
+	if (this.isLineGradient) {
+	  int colorFrom = this.mLinegradientFrom;
+	  int colorTo = this.mLinegradientTo;
+
+	  LinearGradient linearGradientShader = new LinearGradient(rectCurItem.left, rectCurItem.top, rectCurItem.right/2, rectCurItem.top, colorFrom, colorTo, Shader.TileMode.MIRROR);
+	  paint.setShader(linearGradientShader);
+        }
+	    
         canvas.drawLine(rectCurItem.left, rectCurItem.top, rectCurItem.right, rectCurItem.top, paint);
         canvas.drawLine(rectCurItem.left, rectCurItem.bottom, rectCurItem.right, rectCurItem.bottom, paint);
+    }
+	
+    public void setLineColor(Integer color) {
+        this.mLineColor = color;
+    }
+
+    public void setLineGradientColorFrom (Integer color) {
+        this.isLineGradient = true;
+        this.mLinegradientFrom = color;
+    }
+
+    public void setLineGradientColorTo (Integer color) {
+        this.isLineGradient = true;
+        this.mLinegradientTo = color;
     }
 
     @Override

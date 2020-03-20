@@ -90,7 +90,11 @@ export default class App extends Component<{}> {
 				<Text style={styles.welcome}>
 					Welcome to React Native!
 				</Text>
+				
 				<Picker style={{width: 150, height: 180}}
+				        lineColor="#000000" //to set top and bottom line color (Without gradients)
+				        lineGradientColorFrom="#008000" //to set top and bottom starting gradient line color
+				        lineGradientColorTo="#FF5733" //to set top and bottom ending gradient line color
 					selectedValue={this.state.selectedItem}
 					itemStyle={{color:"white", fontSize:26}}
 					onValueChange={(index) => this.onPickerSelect(index)}>

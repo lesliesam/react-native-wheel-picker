@@ -21,7 +21,7 @@ public class ReactWheelCurvedPickerManager extends SimpleViewManager<ReactWheelC
 
     private static final String REACT_CLASS = "WheelCurvedPicker";
 
-    private static final int DEFAULT_TEXT_SIZE = 25 * 2;
+    private static final int DEFAULT_TEXT_SIZE = 29 * 2;
     private static final int DEFAULT_ITEM_SPACE = 14 * 2;
 
     @Override
@@ -84,6 +84,30 @@ public class ReactWheelCurvedPickerManager extends SimpleViewManager<ReactWheelC
     public void setItemSpace(ReactWheelCurvedPicker picker, int space) {
         if (picker != null) {
             picker.setItemSpace((int) PixelUtil.toPixelFromDIP(space));
+        }
+    }
+    
+    @ReactProp(name="lineColor")
+    public void setLineColor(ReactWheelCurvedPicker picker, String color) {
+        if (picker != null) {
+            picker.setLineColor(Utils.parseColor(color));
+            picker.invalidate();
+        }
+    }
+
+    @ReactProp(name="lineGradientColorFrom")
+    public void setLineGradientColorFrom(ReactWheelCurvedPicker picker, String color) {
+        if (picker != null) {
+            picker.setLineGradientColorFrom(Utils.parseColor(color));
+            picker.invalidate();
+        }
+    }
+
+    @ReactProp(name="lineGradientColorTo")
+    public void setLineGradientColorTo(ReactWheelCurvedPicker picker, String color) {
+        if (picker != null) {
+            picker.setLineGradientColorTo(Utils.parseColor(color));
+            picker.invalidate();
         }
     }
 
