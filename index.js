@@ -3,9 +3,9 @@
 import React from 'react';
 
 import {
-	PickerIOS,
 	Platform,
 } from 'react-native';
+import {PickerIOS} from '@react-native-community/picker';
 
 import WheelCurvedPicker from './WheelCurvedPicker'
 
