@@ -36,7 +36,8 @@ class WheelCurvedPicker extends React.Component {
 
 	static defaultProps = {
 		itemStyle : {color:"white", fontSize:26},
-		itemSpace: 20
+		itemSpace: 20,
+		selectedItemTextColor: "white"
 	}
 
 	componentWillReceiveProps (props) {
@@ -69,6 +70,7 @@ class WheelCurvedPicker extends React.Component {
 		return <WheelCurvedPickerNative
 				{...this.props}
 				onValueChange={this._onValueChange}
+				selectedItemTextColor={this.props.selectedItemTextColor}
 				data={this.state.items}
 				textColor={this.state.textColor}
 				textSize={this.state.textSize}
