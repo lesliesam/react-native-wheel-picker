@@ -5,7 +5,7 @@ import android.graphics.Color;
 import android.graphics.LinearGradient;
 import android.graphics.Paint;
 import android.graphics.Shader;
-import android.support.v4.view.MotionEventCompat;
+import androidx.core.view.MotionEventCompat;
 import android.view.MotionEvent;
 
 import com.aigestudio.wheelpicker.view.WheelCurvedPicker;
