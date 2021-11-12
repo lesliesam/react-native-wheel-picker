@@ -2,11 +2,6 @@
 # yarn lockfile v1
 
 
-"@react-native-picker/picker@^2.2.0":
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/@react-native-picker/picker/-/picker-2.2.0.tgz#e96ecc0808bdf2a706a263b422864bee5a0e6b76"
-  integrity sha512-zhzXsppY9t6TU39WMx/x1L1PyP3dPgGhtav7Yo8nlfihNGIAFwHnNcNuyC8CLdWxKj9n2+Z6+ZR6r/Kda82JnA==
-
 add@^2.0.6:
   version "2.0.6"
   resolved "https://registry.yarnpkg.com/add/-/add-2.0.6.tgz#248f0a9f6e5a528ef2295dbeec30532130ae2235"

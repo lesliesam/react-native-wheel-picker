@@ -2,8 +2,7 @@
 
 import React from "react";
 
-import { Platform } from "react-native";
-import { PickerIOS } from "@react-native-picker/picker";
+import { Platform, PickerIOS } from "react-native";
 
 import WheelCurvedPicker from "./WheelCurvedPicker";
 
