@@ -23,5 +23,8 @@
   "homepage": "https://github.com/lesliesam/react-native-wheel-picker#readme",
   "peerDependencies": {
     "@react-native-picker/picker": "^2.4.4"
+  },
+  "dependencies": {
+    "deprecated-react-native-prop-types": "^2.3.0"
   }
 }
