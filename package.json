@@ -22,6 +22,6 @@
   },
   "homepage": "https://github.com/lesliesam/react-native-wheel-picker#readme",
   "peerDependencies": {
-    "@react-native-community/picker": "1.4.0"
+    "@react-native-picker/picker": "^2.4.4"
   }
 }
